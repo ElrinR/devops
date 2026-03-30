@@ -58,7 +58,7 @@ document.head.appendChild(style);
 
 // Typing Effect
 const typingText = document.querySelector('.typing-text');
-const roles = ["Creative Developer", "UI/UX Enthusiast", "Code Wizard", "Problem Solver"];
+const roles = ["Security Interested Person", "Cybersecurity Expert", "Python Developer", "Linux Admin", "DevOps Engineer", "Ethical Hacker", "Cloud Architect"];
 let roleIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -115,4 +115,125 @@ cards.forEach(card => {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
         card.classList.add('is-resetting');
     });
+});
+
+// Particle Network Animation
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+
+let particlesArray;
+
+// Set canvas size
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let mouse = {
+    x: null,
+    y: null,
+    radius: (canvas.height / 80) * (canvas.width / 80)
+}
+
+window.addEventListener('mousemove', (event) => {
+    mouse.x = event.x;
+    mouse.y = event.y;
+});
+
+window.addEventListener('mouseout', () => {
+    mouse.x = undefined;
+    mouse.y = undefined;
+});
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1; // Random size between 1 and 3
+        this.speedX = Math.random() * 1 - 0.5; // Random speed between -0.5 and 0.5
+        this.speedY = Math.random() * 1 - 0.5;
+        this.color = 'rgba(220, 38, 38, 0.2)'; // Red color with low opacity
+    }
+
+    update() {
+        // Check if particle is still within canvas
+        if (this.x > canvas.width || this.x < 0) {
+            this.speedX = -this.speedX;
+        }
+        if (this.y > canvas.height || this.y < 0) {
+            this.speedY = -this.speedY;
+        }
+
+        // Mouse collision detection
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < mouse.radius + this.size) {
+            if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
+                this.x += 10;
+            }
+            if (mouse.x > this.x && this.x > this.size * 10) {
+                this.x -= 10;
+            }
+            if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
+                this.y += 10;
+            }
+            if (mouse.y > this.y && this.y > this.size * 10) {
+                this.y -= 10;
+            }
+        }
+
+        this.x += this.speedX;
+        this.y += this.speedY;
+    }
+
+    draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+function init() {
+    particlesArray = [];
+    let numberOfParticles = (canvas.height * canvas.width) / 9000;
+    for (let i = 0; i < numberOfParticles; i++) {
+        particlesArray.push(new Particle());
+    }
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+
+        // Connect particles with lines
+        for (let j = i; j < particlesArray.length; j++) {
+            const dx = particlesArray[i].x - particlesArray[j].x;
+            const dy = particlesArray[i].y - particlesArray[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 100) {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(220, 38, 38, ${0.1 - distance / 2000})`; // Fade out line based on distance
+                ctx.lineWidth = 1;
+                ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                ctx.stroke();
+            }
+        }
+    }
+}
+
+init();
+animate();
+
+// Resize canvas on window resize
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    mouse.radius = (canvas.height / 80) * (canvas.width / 80);
+    init();
 });

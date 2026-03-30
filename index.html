@@ -11,9 +11,7 @@
 
 <body>
     <div class="background-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
+        <canvas id="bg-canvas"></canvas>
     </div>
 
     <header>
@@ -36,8 +34,12 @@
     <section id="home" class="hero">
         <div class="container hero-content">
             <h1 class="fade-in">Hi, I'm <span class="highlight">Elrin</span></h1>
-            <p class="fade-in delay-1">I am a <span class="typing-text"></span><span class="cursor">|</span></p>
-            <a href="#projects" class="btn fade-in delay-2">View My Projects</a>
+            <p class="fade-in delay-1" style="margin-bottom: 1rem;">I am a <span class="typing-text"></span><span class="cursor">|</span></p>
+            <p class="hero-subtitle fade-in delay-2" style="font-size: 1.2rem; color: #64748b; margin-bottom: 2.5rem; font-weight: 500;">CS B.Tech Student @ Amal Jyothi College <span style="color: #dc2626;">|</span> Seeking Internships</p>
+            <div class="fade-in delay-2" style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="#projects" class="btn">View Projects</a>
+                <a href="#about" class="btn btn-outline" style="margin-top: 0;">Hire Me</a>
+            </div>
         </div>
     </section>
 
@@ -45,17 +47,19 @@
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
+                <div class="about-image">
+                    <img src="assets/profile.jpg" alt="Elrin Profile Picture" style="width: 220px; height: 220px; object-fit: cover; border-radius: 50%; box-shadow: 0 10px 25px rgba(220, 38, 38, 0.2); border: 4px solid #ffffff; outline: 3px solid #dc2626; outline-offset: 4px;">
+                </div>
                 <div class="about-text">
-                    <p>I am a passionate developer with a strong focus on creating clean, elegant, and efficient code. I
-                        love solving problems and turning ideas into reality using modern web technologies.</p>
+                    <p style="font-size: 1.15rem; max-width: 800px; margin: 0 auto;">I am a dedicated <strong>B.Tech Computer Science</strong> student at <strong>Amal Jyothi College of Engineering</strong>. With a strong passion for cybersecurity, backend systems, and modern web development, I thrive on turning complex problems into elegant solutions. I am currently <strong>actively seeking an internship</strong> to apply my technical skills to real-world challenges and contribute to innovative teams.</p>
                 </div>
                 <div class="skills-grid">
-                    <div class="skill-item">HTML5</div>
-                    <div class="skill-item">CSS3</div>
-                    <div class="skill-item">JavaScript</div>
-                    <div class="skill-item">React</div>
-                    <div class="skill-item">Node.js</div>
-                    <div class="skill-item">Git</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">C</div>
+                    <div class="skill-item">Linux</div>
+                    <div class="skill-item">Java</div>
+                    <div class="skill-item">Cybersecurity</div>
+                    <div class="skill-item">SQL</div>
                 </div>
             </div>
         </div>
@@ -68,46 +72,43 @@
                 <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-info">
-                        <h3>E-Commerce Dashboard</h3>
-                        <p>A comprehensive dashboard for managing online stores. Built with <strong>React</strong> and
-                            <strong>Node.js</strong> featuring real-time analytics and inventory management.
-                        </p>
+                        <h3>NetGuard</h3>
+                        <p>A network security dashboard for real-time threat detection (SYN floods, ARP spoofing). Built using a <strong>FastAPI / Scapy</strong> backend and a modern <strong>React</strong> frontend, fully containerized and deployed to AWS EC2.</p>
                         <div class="project-tech">
+                            <span>Python</span>
                             <span>React</span>
-                            <span>Node.js</span>
-                            <span>MongoDB</span>
+                            <span>Docker</span>
+                            <span>AWS</span>
                         </div>
-                        <a href="#" class="project-link">View Project &rarr;</a>
+                        <a href="https://github.com/ElrinR/netguard" target="_blank" class="project-link">View on GitHub &rarr;</a>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
                 <div class="project-card">
                     <div class="project-info">
-                        <h3>Task Master</h3>
-                        <p>A collaborative task management application with drag-and-drop functionality. Implemented
-                            using <strong>Vue.js</strong> and <strong>Firebase</strong> for real-time updates.</p>
+                        <h3>Exam Management System</h3>
+                        <p>A comprehensive system designed for handling student examinations, secure data management, and generating results. Built primarily in Python to ensure fast data processing.</p>
                         <div class="project-tech">
-                            <span>Vue.js</span>
-                            <span>Firebase</span>
-                            <span>Tailwind</span>
+                            <span>Python</span>
+                            <span>SQL</span>
+                            <span>Cybersecurity</span>
                         </div>
-                        <a href="#" class="project-link">View Project &rarr;</a>
+                        <a href="https://github.com/ElrinR/exam_managment" target="_blank" class="project-link">View on GitHub &rarr;</a>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
                 <div class="project-card">
                     <div class="project-info">
-                        <h3>WeatherNow App</h3>
-                        <p>A sleek weather forecast application leveraging the OpenWeatherMap API. Provides geolocation
-                            support and detailed 5-day forecasts.</p>
+                        <h3>Instagram Clone</h3>
+                        <p>A dynamic social media application replicating core Instagram features like photo sharing, an interactive feed, and secure backend integration for user data.</p>
                         <div class="project-tech">
                             <span>JavaScript</span>
-                            <span>API</span>
-                            <span>CSS3</span>
+                            <span>React</span>
+                            <span>Node.js</span>
                         </div>
-                        <a href="#" class="project-link">View Project &rarr;</a>
+                        <a href="https://github.com/ElrinR" target="_blank" class="project-link">View Profile &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -123,7 +124,6 @@
             <div class="social-links">
                 <a href="https://github.com/ElrinR" target="_blank">GitHub</a>
                 <a href="https://www.linkedin.com/in/elrin-robinson-4334942a9" target="_blank">LinkedIn</a>
-                <a href="#">Twitter</a>
             </div>
         </div>
     </section>
@@ -134,7 +134,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 </body>
 
 </html>
